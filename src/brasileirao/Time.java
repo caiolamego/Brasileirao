@@ -15,7 +15,7 @@ public class Time {
 	}
 	
 	public void adicionarPontos(int pontos) {
-		this.pontos = 3;
+		this.pontos += pontos;
 	}
 	
 	public int getPontos() {
