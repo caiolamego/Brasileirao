@@ -11,12 +11,15 @@ public class Sumula {
         this.golsMandante = golsMandante;
         this.golsVisitante = golsVisitante;
         
-        if(golsMandante == 2 && golsVisitante == 0) {
+        if(golsMandante > golsVisitante) {
         	this.pontosMandante = 3;
         	this.pontosVisitante = 0;
-        } else {
+        } else if (golsVisitante >  golsMandante) {
         	this.pontosMandante = 0;
-        	this.pontosVisitante = 0;
+        	this.pontosVisitante = 3;
+        } else {
+        	this.pontosMandante = 1;
+        	this.pontosVisitante = 1;
         }
     }
 

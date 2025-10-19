@@ -15,5 +15,20 @@ public class TesteSumula {
 		assertEquals(0, s.getPontosVisitante());
 		
 	}
+	
+	@Test
+	public void testePontosVitoriaVisitante() {
+		Sumula s = new Sumula(0,2);
+		assertEquals(0, s.getPontosMandante());
+		assertEquals(3, s.getPontosVisitante());
+	}
+	
+	@Test
+	public void testePontosEmpate() {
+		Sumula s = new Sumula(3,3);
+		assertEquals(1, s.getPontosMandante());
+		assertEquals(1, s.getPontosVisitante());
+		
+	}
 
 }
