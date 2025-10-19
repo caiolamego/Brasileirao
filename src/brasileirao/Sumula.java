@@ -14,4 +14,12 @@ public class Sumula {
     public String toString() {
         return golsMandante + " x " + golsVisitante;
     }
+    
+    public int getPontosMandante() {
+    	return 0;
+    }
+    
+    public int getPontosVisitante() {
+    	return 0;
+    }
 }
