@@ -48,7 +48,7 @@ Abaixo os integrantes da equipe e suas respectivas matriculas:
         <img style="border-radius: 50%;" src="https://github.com/caiolamego.png" width="100px;" alt=""/><br/>
         <sub><b>Caio Lamego</b></sub>
       </a><br/>
-      <sub>---------</sub>
+      <sub>222031045</sub>
     </td>
     <td align="center">
       <a href="https://github.com/EliasOliver21">
