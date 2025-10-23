@@ -57,6 +57,14 @@ Abaixo os integrantes da equipe e suas respectivas matriculas:
       </a><br/>
       <sub>221007706</sub>
     </td>
+    </td>
+    <td align="center">
+      <a href="https://github.com/Bertolazi">
+        <img style="border-radius: 50%;" src="https://github.com/Bertolazi.png" width="100px;" alt=""/><br/>
+        <sub><b>Gabriel Basto Bertolazi</b></sub>
+      </a><br/>
+      <sub>2020023663</sub>
+    </td>
   </tr>
 </table>
 
