@@ -18,44 +18,41 @@ import brasileirao.Time;
 @RunWith(Parameterized.class)
 public class TestePartida {
 	
-	Partida partida;
-	
-	Object[][] resultados;
-	String resultado;
+	private Time mandante;
+    private Time visitante;
+    private Partida partida;
+
+	private final int golsMandanteParam;
+    private final int golsVisitanteParam;
+    private final String resultadoStringEsperado;
+    private final int pontosMandanteEsperado;
+    private final int pontosVisitanteEsperado;
 	
 	@Before
 	public void setup() {
-		partida = new Partida();
+		mandante = new Time("Mandante");
+        visitante = new Time("Visitante");
+        partida = new Partida(mandante, visitante);
 	}
 	
-	public TestePartida(Object[][] resultados, String resultado) {
-		this.resultados = resultados;
-		this.resultado = resultado;
-	}
+	public TestePartida(int gm, int gv, String esperado, int ptsM, int ptsV) {
+        this.golsMandanteParam = gm;
+        this.golsVisitanteParam = gv;
+        this.resultadoStringEsperado = esperado;
+        this.pontosMandanteEsperado = ptsM;
+        this.pontosVisitanteEsperado = ptsV;
+    }
 	
 	@Parameters
-	public static Collection<Object[]> getParameters(){
-		Object[][] respostas = new Object[][] {
-			{new Object[][] {
-				{2, 0},
-			}, "2 x 0"},
-			{new Object[][] {
-				{2, 0}, {3,0},
-			}, "2 x 0\n3 x 0"},
-			{new Object[][] {
-				{2, 0}, {3,0}, {4,0},
-			}, "2 x 0\n3 x 0\n4 x 0"},
-		};
-		return Arrays.asList(respostas);
-	}
+    public static Collection<Object[]> getParameters() {
+        return Arrays.asList(new Object[][] {
+            // gm, gv,   placar,  ptsMandante, ptsVisitante
+            { 2, 0,  "2 x 0",         3,            0 }, // vitória mandante
+            { 0, 2,  "0 x 2",         0,            3 }, // vitória visitante
+            { 1, 1,  "1 x 1",         1,            1 }  // empate
+        });
+    }
 	
-	@Test
-	public void testRegistroResultados() {
-		for (Object[] o : resultados) {
-			partida.registrarResultado((int)o[0], (int)o[1]);
-		}
-		assertEquals(resultado, partida.getResultados());
-	}
 		
 	@Test
 	public void testAcumulacaoDePartidas() {
@@ -72,6 +69,21 @@ public class TestePartida {
 		assertEquals(-1, t.getSaldoDeGols());
 		
 	}
+
+	@Test
+    public void testRegistrarResultadoUnico() {
+        partida.registrarResultado(golsMandanteParam, golsVisitanteParam);
+        assertEquals(resultadoStringEsperado, partida.getResultado());
+    }
+
+	@Test
+    public void testProcessarResultadoAtualizaDoisTimes() {
+        partida.registrarResultado(golsMandanteParam, golsVisitanteParam);
+        partida.processarResultado();
+
+        assertEquals(pontosMandanteEsperado, mandante.getPontos());
+        assertEquals(pontosVisitanteEsperado, visitante.getPontos());
+    }
 
 
 }
