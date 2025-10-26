@@ -20,32 +20,39 @@ public class Campeonato {
     }
 
     public void gerarRodadas() {
+        rodadas.clear();
         int n = times.size();
         if (n <= 0 || n % 2 != 0) {
             throw new IllegalStateException("Numero de times deve ser par e maior que zero.");
         }
 
-        // lista com todos os confrontos possíveis
-        List<Partida> todas = new ArrayList<>();
-        for (Time mandante : times) {
-            for (Time visitante : times) {
-                if (mandante != visitante) {
-                    todas.add(new Partida(mandante, visitante));
-                }
+        java.util.List<Time> lista = new java.util.ArrayList<>(times);
+        //java.util.Collections.shuffle(lista); 
+
+        int rounds = n - 1;
+        int jogosPorRodada = n / 2;
+
+        java.util.List<Rodada> turno = new java.util.ArrayList<>(rounds);
+        for (int r = 0; r < rounds; r++) {
+            Rodada rodada = new Rodada();
+
+            for (int i = 0; i < jogosPorRodada; i++) {
+                Time mandante = lista.get(i);
+                Time visitante = lista.get(n - 1 - i);
+                rodada.addPartida(new Partida(mandante, visitante));
             }
+            turno.add(rodada);
+
+            java.util.Collections.rotate(lista.subList(1, n), 1);
         }
 
-        Collections.shuffle(todas); //sorteio
-
-        int numRodadas = (n - 1) * 2;
-        int partidasPorRodada = n / 2;
-
-        for (int i = 0; i < numRodadas; i++) {
-            Rodada r = new Rodada();
-            for (int j = 0; j < partidasPorRodada; j++) {
-                r.addPartida(todas.remove(0));
+        for (Rodada r : turno) {
+            Rodada espelho = new Rodada();
+            for (Partida p : r.getPartidas()) {
+                espelho.addPartida(new Partida(p.getVisitante(), p.getMandante()));
             }
             rodadas.add(r);
+            rodadas.add(espelho);
         }
     }
 
