@@ -65,6 +65,14 @@ Abaixo os integrantes da equipe e suas respectivas matriculas:
       </a><br/>
       <sub>202023663</sub>
     </td>
+    </td>
+    <td align="center">
+      <a href="https://github.com/MatheussBrant">
+        <img style="border-radius: 50%;" src="https://github.com/MatheussBrant.png" width="100px;" alt=""/><br/>
+        <sub><b>Matheus Brant</b></sub>
+      </a><br/>
+      <sub>222037737</sub>
+    </td>
   </tr>
 </table>
 
