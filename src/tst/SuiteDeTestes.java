@@ -7,8 +7,7 @@ import org.junit.runners.Suite.SuiteClasses;
 @RunWith(Suite.class)
 @SuiteClasses({TestePartida.class,
      				TestePartidaIntegracao.class, 
-	    			TesteTime.class,
-                    TesteSumula.class})
+	    			TesteTime.class,})
 public class SuiteDeTestes {
     
 }

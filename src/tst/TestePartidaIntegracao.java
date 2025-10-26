@@ -54,6 +54,7 @@ public class TestePartidaIntegracao {
 	@Test
 	public void testePartidaAtualizaPontos() {
 		partida.registrarResultado(golsMandante, golsVisitante);
+		partida.processarResultado();
 		assertEquals(pontosMandanteEsperado, mandante.getPontos());
 		assertEquals(pontosVisitanteEsperado, visitante.getPontos());
 	}
