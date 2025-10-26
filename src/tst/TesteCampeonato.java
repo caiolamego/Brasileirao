@@ -58,4 +58,23 @@ public class TesteCampeonato {
             brasileirao.gerarRodadas(); 
         }
 
+    @Test
+        public void testClassificacaoPorPontosEDesempateVitorias() {
+            Time a = new Time("Time A"); // 3 pts, 1V
+            Time b = new Time("Time B"); // 3 pts, 0V
+            brasileirao.adicionarTime(a);
+            brasileirao.adicionarTime(b);
+
+            a.adicionarPartidaJogada(1, 0); // vitória -> +3
+            b.adicionarPartidaJogada(1, 1); // empate -> +1
+            b.adicionarPartidaJogada(0, 0); // +1 (2)
+            b.adicionarPartidaJogada(2, 2); // +1 (3) e 0 vitórias
+
+            java.util.List<Time> cls = brasileirao.getClassificacao();
+
+            assertEquals("Time A", cls.get(0).getNome());
+            assertEquals("Time B", cls.get(1).getNome());
+        }
+
+
 }
