@@ -49,4 +49,13 @@ public class TesteCampeonato {
         }
         assertEquals(12, totalPartidas);
     }
+
+    @Test(expected = IllegalStateException.class)
+        public void testGerarRodadasComNumeroImparDeTimes() {
+            brasileirao.adicionarTime(new Time("A"));
+            brasileirao.adicionarTime(new Time("B"));
+            brasileirao.adicionarTime(new Time("C")); 
+            brasileirao.gerarRodadas(); 
+        }
+
 }
