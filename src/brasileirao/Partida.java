@@ -1,43 +1,49 @@
 package brasileirao;
 
-import java.util.LinkedList;
-import java.util.List;
-
 public class Partida {
 	
-    private List<Sumula> resultados;
     private Time mandante;
     private Time visitante;
+    private int golsMandante;
+    private int golsVisitante;
+    private boolean resultadoRegistrado;
+
 
     public Partida() {
-        resultados = new LinkedList<>();
-        this.mandante = null;
-        this.visitante = null;
-    }
-    
-    public Partida(Time mandante, Time visitante) {
-    	this.resultados = new LinkedList<>();
-    	this.mandante = mandante;
-    	this.visitante = visitante;
+        this(null, null);
     }
 
+    public Partida(Time mandante, Time visitante) {
+    	this.mandante = mandante;
+    	this.visitante = visitante;
+        this.golsMandante = 0;
+        this.golsVisitante = 0;
+        this.resultadoRegistrado = false;
+    }
+
+    public Time getMandante() { return mandante; }
+    public Time getVisitante() { return visitante; }
+
     public void registrarResultado(int golsMandante, int golsVisitante) {
-        Sumula s = new Sumula(golsMandante, golsVisitante);
-        resultados.add(s);
-        
+        this.golsMandante = golsMandante;
+        this.golsVisitante = golsVisitante;
+        this.resultadoRegistrado = true;
+    }
+
+    public void processarResultado() {
+        if (!resultadoRegistrado) {
+            throw new IllegalStateException("Resultado ainda não foi registrado.");
+        }
         if (mandante != null) {
-        	mandante.adicionarPontos(s.getPontosMandante());
+            mandante.adicionarPartidaJogada(golsMandante, golsVisitante);
         }
         if (visitante != null) {
-        	visitante.adicionarPontos(s.getPontosVisitante());
+            visitante.adicionarPartidaJogada(golsVisitante, golsMandante);
         }
     }
 	
-    public String getResultados() {
-        List<String> todos = new LinkedList<>();
-        for (Sumula s : resultados) {
-            todos.add(s.toString());
-        }
-        return String.join("\n", todos);
+    public String getResultado() {
+        return golsMandante + " x " + golsVisitante;
     }
+
 }
