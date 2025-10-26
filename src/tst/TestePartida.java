@@ -58,42 +58,19 @@ public class TestePartida {
 	}
 		
 	@Test
-	public void testAdicionarPartidaVitoria() {
+	public void testAcumulacaoDePartidas() {
 		Time t = new Time("Cruzeiro");
-		t.adicionarPartidaJogada(2, 0); 
-		assertEquals(3, t.getPontos());
+		t.adicionarPartidaJogada(2, 1); 
+		t.adicionarPartidaJogada(0, 0); 
+		t.adicionarPartidaJogada(0, 2); 
+		assertEquals(4, t.getPontos());
 		assertEquals(1, t.getVitorias());
-		assertEquals(0, t.getEmpates());
-		assertEquals(0, t.getDerrotas());
-		assertEquals(2, t.getGolsMarcados());
-		assertEquals(0, t.getGolsSofridos());
-		assertEquals(2, t.getSaldoDeGols());
-	}
-
-	@Test
-	public void testAdicionarPartidaEmpate() {
-		Time t = new Time("Cruzeiro");
-		t.adicionarPartidaJogada(1, 1);
-		assertEquals(1, t.getPontos());
-		assertEquals(0, t.getVitorias());
 		assertEquals(1, t.getEmpates());
-		assertEquals(0, t.getDerrotas());
-		assertEquals(1, t.getGolsMarcados());
-		assertEquals(1, t.getGolsSofridos());
-		assertEquals(0, t.getSaldoDeGols());
-	}
-
-	@Test
-	public void testAdicionarPartidaDerrota() {
-		Time t = new Time("Cruzeiro");
-		t.adicionarPartidaJogada(0, 3);
-		assertEquals(0, t.getPontos());
-		assertEquals(0, t.getVitorias());
-		assertEquals(0, t.getEmpates());
 		assertEquals(1, t.getDerrotas());
-		assertEquals(0, t.getGolsMarcados());
+		assertEquals(2, t.getGolsMarcados());
 		assertEquals(3, t.getGolsSofridos());
-		assertEquals(-3, t.getSaldoDeGols());
+		assertEquals(-1, t.getSaldoDeGols());
+		
 	}
 
 
