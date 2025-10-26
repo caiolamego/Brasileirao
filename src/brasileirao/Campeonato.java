@@ -51,11 +51,8 @@ public class Campeonato {
 
     public List<Time> getClassificacao() {
         List<Time> copia = new ArrayList<>(times);
-        copia.sort((t1, t2) -> {
-            if (t1.getPontos() != t2.getPontos()) return t2.getPontos() - t1.getPontos();
-            if (t1.getVitorias() != t2.getVitorias()) return t2.getVitorias() - t1.getVitorias();
-            return 0; 
-        });
+        copia.sort(new ClassificacaoComparator());
         return copia;
     }
+
 }
