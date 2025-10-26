@@ -76,5 +76,29 @@ public class TesteCampeonato {
             assertEquals("Time B", cls.get(1).getNome());
         }
 
+    @Test
+        public void testRodadasSemRepeticaoENComTodosOsTimes_naRodada() {
+            Campeonato camp = new Campeonato();
+            Time t1 = new Time("A"); Time t2 = new Time("B"); Time t3 = new Time("C");
+            Time t4 = new Time("D"); Time t5 = new Time("E"); Time t6 = new Time("F");
+            Arrays.asList(t1,t2,t3,t4,t5,t6).forEach(camp::adicionarTime);
+
+            camp.gerarRodadas(); 
+
+            int n = camp.getTimes().size();
+            int partidasPorRodada = n / 2;
+
+            for (Rodada r : camp.getRodadas()) {
+                assertEquals(partidasPorRodada, r.getPartidas().size());
+
+                java.util.Set<Time> vistos = new java.util.HashSet<>();
+                for (Partida p : r.getPartidas()) {
+                    assertTrue("time mandante repetido na rodada", vistos.add(p.getMandante()));
+                    assertTrue("time visitante repetido na rodada", vistos.add(p.getVisitante()));
+                }
+                assertEquals("nem todos os times presentes na rodada", n, vistos.size());
+            }
+        }
+
 
 }
