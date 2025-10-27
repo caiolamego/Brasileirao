@@ -9,6 +9,6 @@ import org.junit.runners.Suite.SuiteClasses;
      				TestePartidaIntegracao.class, 
 	    			TesteTime.class,
 					TesteCampeonato.class})
-public class SuiteDeTestes {
+public class AllTests {
     
 }
