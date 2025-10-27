@@ -39,6 +39,10 @@ Cada uma dessas funcionalidades deve ser desenvolvida em seu caso de teste próp
 
 A fim de seguir os critérios do trabalho e colocar em prática os conteúdos da disciplina, o desenvolvimento da primeira versão do Sistema de Classificação do Brasileirão, foi feito utilizando a metodologia do TDD. Ao todo, completou-se 9 ciclos, visando seguir à risca cada passo dentre RED, GREEN, REFACT. A "documentação" da implementação de cada passo foi feita na própria mensagem dos commits, seguindo o padrão de ciclo referente - passo - implementação.
 
+## Estrutura
+
+O projeto ficou estruturado em 5 casses além de uma Main, sendo elas: Campeonato, ClassificacaoComparator, Partida, Time e Rodada. Também estruturou-se em 5 arquivos diferentes de Testes, no pacote tst, sendo eles: TesteCampeonato, TestePartida, TestePartidaIntegracao, TesteTime e uma suíte com todos os testes "AllTests". Para melhorias na a entrega 2, fica-se definido a padronização de todos os arquivos de testes em Testes Parametrizados, além de implementações de exceções e categorias de Teste (Ex: Funcional, Exceção, etc.).
+
 ## Integrantes
 
 Abaixo os integrantes da equipe e suas respectivas matriculas:
