@@ -122,6 +122,31 @@ public class TesteCampeonato {
 	        assertEquals(a.getVitorias(), b.getVitorias());  
 	        assertTrue(a.getSaldoDeGols() > b.getSaldoDeGols());
 	    }
+    
+    @Test
+	    public void testClassificacaoPorPontosEVitoriasESaldoDeGolsEDesempateGolsMarcados() {
+	        Time a = new Time("Time A"); 
+	        Time b = new Time("Time B");
+
+	        brasileirao.adicionarTime(b); 
+	        brasileirao.adicionarTime(a);
+	        
+	        a.adicionarPartidaJogada(2, 1); 
+	        a.adicionarPartidaJogada(1, 0); 
+	
+	        b.adicionarPartidaJogada(1, 0); 
+	        b.adicionarPartidaJogada(1, 0);
+	
+	        java.util.List<Time> cls = brasileirao.getClassificacao();
+	
+	        assertEquals("Time A", cls.get(0).getNome()); 
+	        assertEquals("Time B", cls.get(1).getNome());
+	        
+	        assertEquals(a.getPontos(), b.getPontos()); 
+	        assertEquals(a.getVitorias(), b.getVitorias()); 
+	        assertEquals(a.getSaldoDeGols(), b.getSaldoDeGols()); 
+	        assertTrue(a.getGolsMarcados() > b.getGolsMarcados()); 
+	    }
 }
 
     
