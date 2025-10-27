@@ -35,6 +35,10 @@ calcular os números de vitórias, gols marcados, gols sofridos, e saldos de gol
 aplicar o critério de desempate pelo número de vitórias.
 Cada uma dessas funcionalidades deve ser desenvolvida em seu caso de teste próprio. O conjunto final contendo todos os casos de testes deve ser executado de uma só vez, através da suíte de testes AllTests.
 
+## Metodologia
+
+A fim de seguir os critérios do trabalho e colocar em prática os conteúdos da disciplina, o desenvolvimento da primeira versão do Sistema de Classificação do Brasileirão, foi feito utilizando a metodologia do TDD. Ao todo, completou-se 9 ciclos, visando seguir à risca cada passo dentre RED, GREEN, REFACT. A "documentação" da implementação de cada passo foi feita na própria mensagem dos commits, seguindo o padrão de ciclo referente - passo - implementação.
+
 ## Integrantes
 
 Abaixo os integrantes da equipe e suas respectivas matriculas:
@@ -78,3 +82,7 @@ Abaixo os integrantes da equipe e suas respectivas matriculas:
 
 </div>
 
+## Repositório
+
+O projeto pode ser encontrado no repositório através do link: https://github.com/caiolamego/Brasileirao
+ 
