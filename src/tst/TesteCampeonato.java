@@ -25,29 +25,56 @@ public class TesteCampeonato {
     }
 
     @Test
-    public void testGerarRodadasCom4Times() {
-        Time a = new Time("Time A");
-        Time b = new Time("Time B");
-        Time c = new Time("Time C");
-        Time d = new Time("Time D");
-        Arrays.asList(a,b,c,d).forEach(brasileirao::adicionarTime);
+    public void testGerarRodadasCom20Times() {
+        
+        java.util.List<Time> times = new java.util.ArrayList<>();
+
+        for(int i = 1; i <= 20 ; i++){
+
+            Time t = new Time("Time " + i);
+            times.add(t);
+            brasileirao.adicionarTime(t);
+        }
 
         brasileirao.gerarRodadas(); 
-
-        assertEquals(6, brasileirao.getRodadas().size());
+        //valida a geração das 38 rodadas
+        assertEquals(38, brasileirao.getRodadas().size());
 
         Set<String> jogosUnicos = new HashSet<>();
         int totalPartidas = 0;
+        int rodadaNum = 0;
+
+        
 
         for (Rodada r : brasileirao.getRodadas()) {
-            assertEquals(2, r.getPartidas().size());
+
+            rodadaNum++;
+            //Cada rodada deve ter 10 jogos
+            assertEquals("Rodada " + rodadaNum + " não tem 10 jogos", 10, r.getPartidas().size());
+
+            Set<Time> timesNaRodada = new HashSet<>();
+
+            
             for (Partida p : r.getPartidas()) {
                 totalPartidas++;
+                
+                //Garantia de jogo único
                 String chave = p.getMandante().getNome() + " x " + p.getVisitante().getNome();
                 assertTrue("Jogo duplicado: " + chave, jogosUnicos.add(chave));
+                
+                //Garantia de não repetição de times na rodada
+                assertTrue("Time mandante repetido na rodada: " + p.getMandante().getNome(), timesNaRodada.add(p.getMandante()));
+                assertTrue("Time visitante repetido na rodada: " + p.getVisitante().getNome(), timesNaRodada.add(p.getVisitante()));
+
             }
+
+            // Garantir que todos os 20 times estavam na rodada
+            assertEquals(20, timesNaRodada.size());
+            
         }
-        assertEquals(12, totalPartidas);
+        // Total de jogos (Turno e Returno) deve ser 380
+        assertEquals(380, totalPartidas);
+        assertEquals(380, jogosUnicos.size());
     }
 
     @Test(expected = IllegalStateException.class)
