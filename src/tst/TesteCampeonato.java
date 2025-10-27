@@ -99,6 +99,27 @@ public class TesteCampeonato {
                 assertEquals("nem todos os times presentes na rodada", n, vistos.size());
             }
         }
+        
+    @Test
+        public void testClassificacaoPorPontosEVitoriasEDesempateSaldoDeGols() {
+            Time a = new Time("Time A"); 
+            Time b = new Time("Time B"); 
+            brasileirao.adicionarTime(a);
+            brasileirao.adicionarTime(b);
 
+            a.adicionarPartidaJogada(2, 0); 
+        
+            b.adicionarPartidaJogada(1, 0); 
 
+            java.util.List<Time> cls = brasileirao.getClassificacao();
+
+            assertEquals("Time A", cls.get(0).getNome());
+            assertEquals("Time B", cls.get(1).getNome());
+            
+            assertEquals(a.getPontos(), b.getPontos()); 
+            assertEquals(a.getVitorias(), b.getVitorias()); 
+            assertTrue(a.getSaldoDeGols() > b.getSaldoDeGols()); 
+        }
 }
+
+    
