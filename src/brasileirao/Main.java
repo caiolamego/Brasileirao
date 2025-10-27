@@ -41,7 +41,7 @@ public class Main {
         for (Rodada r : camp.getRodadas()) {
             System.out.println("\n=== Rodada " + (rodadaNum++) + " ===");
             for (Partida p : r.getPartidas()) {
-                int gm = rng.nextInt(Math.max(1, MAX_GOLS)); // 0..MAX_GOLS-1
+                int gm = rng.nextInt(Math.max(1, MAX_GOLS)); 
                 int gv = rng.nextInt(Math.max(1, MAX_GOLS));
                 p.registrarResultado(gm, gv);
                 p.processarResultado();
