@@ -27,24 +27,36 @@ public class Campeonato {
         }
 
         java.util.List<Time> lista = new java.util.ArrayList<>(times);
-        //java.util.Collections.shuffle(lista); 
 
         int rounds = n - 1;
         int jogosPorRodada = n / 2;
 
+        List<Rodada>turno = gerarTurno(rounds, jogosPorRodada, lista, n);
+        
+        gerarReturno(turno);
+
+    }
+
+    private List<Rodada> gerarTurno(int rounds, int jogosPorRodada, List<Time>lista, int qtdeTimes) {
         java.util.List<Rodada> turno = new java.util.ArrayList<>(rounds);
+        
         for (int r = 0; r < rounds; r++) {
             Rodada rodada = new Rodada();
 
             for (int i = 0; i < jogosPorRodada; i++) {
                 Time mandante = lista.get(i);
-                Time visitante = lista.get(n - 1 - i);
+                Time visitante = lista.get(qtdeTimes - 1 - i);
                 rodada.addPartida(new Partida(mandante, visitante));
             }
             turno.add(rodada);
 
-            java.util.Collections.rotate(lista.subList(1, n), 1);
+            java.util.Collections.rotate(lista.subList(1, qtdeTimes), 1);
         }
+
+        return turno;
+    }
+
+    private void gerarReturno(List<Rodada>turno) {
 
         for (Rodada r : turno) {
             Rodada espelho = new Rodada();
