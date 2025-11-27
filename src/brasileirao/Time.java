@@ -3,7 +3,6 @@ package brasileirao;
 public class Time {
 	
 	private String nome;
-	// NOVO CAMPO DELEGADO
     private EstatisticasTime estatisticas;
 	
 	public Time(String nome) {
