@@ -17,7 +17,6 @@ public class Main {
 
         camp.gerarRodadas();
 
-        //validação das rodadas 
         int n = camp.getTimes().size();
         int jogosPorRodada = n / 2;
         boolean okRodadas = true, okSemDuplicidadeGlobal = true;
@@ -36,7 +35,7 @@ public class Main {
         System.out.println("=== Mini Brasileirão (6 times) ===");
         System.out.println("Rodadas ok: " + okRodadas + " | Sem duplicidade global: " + okSemDuplicidadeGlobal);
 
-        //registrarResultado + processarResultado
+
         int rodadaNum = 1;
         for (Rodada r : camp.getRodadas()) {
             System.out.println("\n=== Rodada " + (rodadaNum++) + " ===");
@@ -49,8 +48,7 @@ public class Main {
                     p.getMandante().getNome(), p.getResultado(), p.getVisitante().getNome());
             }
         }
-
-        //Pontos e stats 
+ 
         boolean okPontosEStats = true;
         for (Time t : camp.getTimes()) {
             int esperadoP = 3 * t.getVitorias() + t.getEmpates();
@@ -59,7 +57,6 @@ public class Main {
         }
         System.out.println("\nPontos/Stats coerentes: " + okPontosEStats);
 
-        //Classificação 
         List<Time> tabela = camp.getClassificacao();
         System.out.println("\n================= TABELA FINAL =================");
         System.out.printf("%-2s %-10s %3s %3s %3s %3s %4s%n", "#", "Time", "Pts", "Vit", "GP", "GC", "SG");
