@@ -50,10 +50,14 @@ public class Campeonato {
             }
             turno.add(rodada);
 
-            java.util.Collections.rotate(lista.subList(1, qtdeTimes), 1);
+            rotacionarLista(lista, qtdeTimes);
         }
 
         return turno;
+    }
+    
+    private void rotacionarLista(List<Time> lista, int qtdeTimes) {
+        java.util.Collections.rotate(lista.subList(1, qtdeTimes), 1);
     }
 
     private void gerarReturno(List<Rodada>turno) {
